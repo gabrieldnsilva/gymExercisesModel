@@ -1,13 +1,16 @@
 export const exerciseOptions = {
 	method: "GET",
-	url: "https://exercisedb.p.rapidapi.com/status",
 	headers: {
 		"x-rapidapi-key": process.env.REACT_APP_RAPID_API_KEY,
 		"x-rapidapi-host": "exercisedb.p.rapidapi.com",
 	},
 };
 
-export const fetchData = async (url, options) => {
+export const fetchData = async (baseUrl, options, limit = 10, offset = 0) => {
+	const url = new URL(baseUrl);
+	url.searchParams.append("limit", limit);
+	url.searchParams.append("offset", offset);
+
 	const response = await fetch(url, options);
 	const data = await response.json();
 
