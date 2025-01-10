@@ -6,10 +6,9 @@ export const exerciseOptions = {
 	},
 };
 
-export const fetchData = async (baseUrl, options, limit = 10, offset = 0) => {
+export const fetchData = async (baseUrl, options, limit = 0) => {
 	const url = new URL(baseUrl);
 	url.searchParams.append("limit", limit);
-	url.searchParams.append("offset", offset);
 
 	const response = await fetch(url, options);
 	const data = await response.json();
