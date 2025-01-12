@@ -34,7 +34,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
 				exercisesData = await fetchData(
 					`https://exercisesdb.p.rapidapi.com/exercises?type=${bodyPart}`,
 					exerciseOptions,
-					50
+					0
 				);
 			}
 
@@ -42,7 +42,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
 		};
 
 		fetchExercisesData();
-	}, [bodyPart]);
+	}, [bodyPart, setExercises]);
 
 	return (
 		<Box id="exercises" sx={{ mt: { lg: "109px" } }} mt="50px" p="20px">
